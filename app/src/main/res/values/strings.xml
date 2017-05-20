@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">SoftGroup Android Test Task</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="text_login">Login</string>
+    <string name="text_register">Register</string>
+    <string name="error_message_email_low_field">Can\'t be less than 6 symbols</string>
+    <string name="error_message_email">Enter Valid Email</string>
+    <string name="error_message_password_low_field">Can\'t be less than 4 symbols</string>
+    <string name="error_message_password">Enter Password</string>
+    <string name="success_message">Registration Successful</string>
+    <string name="register">Sign Up</string>
+    <string name="exit">Exit</string>
+    <string name="error_email_exists">Email Already Exists</string>
+    <string name="error_password_match">Password Does Not Matches</string>
+    <string name="error_valid_email_password">Wrong Email or Password</string>
+    <string name="text_hello">Hi,</string>
+    <string name="text_title">SoftGroup Android Test Task</string>
+</resources>

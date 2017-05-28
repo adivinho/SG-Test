@@ -38,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private DatabaseManager databaseHelper;
     private User user;
 
-    private UsersList storage;
+    public UsersList storage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         dataValidation = new DataValidation(activity);
         databaseHelper = new DatabaseManager(activity);
         user = new User();
+        storage = UsersList.getInstance();
     }
 
     @Override
@@ -80,7 +81,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.appCompatButtonRegister:
                 postDataToSQLite();
-      //          postDataToSingleton();
+//                postDataToSingleton();
                 break;
         }
     }
@@ -107,14 +108,15 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String email = textInputEditTextEmail.getText().toString().trim();
 
         for (User u : users) {
-            if (!email.equals(u.getEmail())){
-                storage.addUser(user);
-                Toast.makeText(getApplicationContext(), getString(R.string.success_message), Toast.LENGTH_LONG).show();
-                finish();
-            }else{
+            if (email.equals(u.getEmail())){
                 Toast.makeText(getApplicationContext(), getString(R.string.error_email_exists), Toast.LENGTH_LONG).show();
+                finish();
+                return;
             }
         }
+        storage.addUser(user);
+        Toast.makeText(getApplicationContext(), getString(R.string.success_message), Toast.LENGTH_LONG).show();
+        finish();
     }
 
     private void postDataToSQLite() {

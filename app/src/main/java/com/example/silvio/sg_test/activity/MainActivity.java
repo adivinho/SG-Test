@@ -74,14 +74,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initObjects() {
         databaseHelper = new DatabaseManager(activity);
         dataValidation = new DataValidation(activity);
-
+        storage = UsersList.getInstance();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
-     //           verifyFromSingleton();
+//                verifyFromSingleton();
                 verifyFromSQLite();
                 break;
             case R.id.appCompatButtonRegister:
@@ -113,10 +113,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     accountsIntent.putExtra("EMAIL", (String) textInputEditTextEmail.getText().toString().trim());
                     emptyInputEditText();
                     startActivity(accountsIntent);
-                } else
-                    Toast.makeText(getApplicationContext(), getString(R.string.error_valid_email_password), Toast.LENGTH_LONG).show();
+                }
             }
         }
+        Toast.makeText(getApplicationContext(), getString(R.string.error_valid_email_password), Toast.LENGTH_LONG).show();
+        emptyInputEditText();
     }
 
     private void verifyFromSQLite() {
